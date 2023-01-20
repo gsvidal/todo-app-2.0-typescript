@@ -6,12 +6,13 @@
 
 .app {
   margin: 0 auto;
-  max-width: 1200px;
+  padding: 0 20px;
+  max-width: 1000px;
 }
 
 .app h1 {
   display: inline-block;
-  font-size: 3rem;
+  font-size: 2rem;
   padding: 10px 25px 20px 25px;
   margin-top: 40px;
   border-radius: 6px;
@@ -35,4 +36,10 @@
 
 .button:active {
   background-color: var(--button-color-active);
+}
+
+@media screen and (min-width: 400px) {
+  .app h1 {
+    font-size: 3rem;
+  }
 }

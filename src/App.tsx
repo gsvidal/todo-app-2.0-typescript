@@ -53,6 +53,7 @@ const App = (): JSX.Element => {
         <EditFormModal
           onSaveEdition={handleSaveEdition}
           todoToEditText={todoToEdit!.text}
+          setIsModalOpen={setIsModalOpen}
         />
       )}
     </div>
