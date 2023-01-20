@@ -8,7 +8,7 @@ type NewTodoProps = {
 const NewTodo = ({ onAddTodo }: NewTodoProps): JSX.Element => {
   const todoTextInputRef = useRef<HTMLInputElement | null>(null);
   const formRef = useRef<HTMLFormElement | null>(null);
-  const handleSubmit = (event: FormEvent) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const enteredText = todoTextInputRef.current!.value;
 
@@ -34,7 +34,7 @@ const NewTodo = ({ onAddTodo }: NewTodoProps): JSX.Element => {
         id="text"
         ref={todoTextInputRef}
       />
-      <button>Add todo</button>
+      <button className="button">Add todo</button>
     </form>
   );
 };
