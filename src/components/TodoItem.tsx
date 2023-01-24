@@ -1,20 +1,18 @@
 import { MouseEvent } from 'react';
 import Todo from '../models/Todo';
 import classes from './TodoItem.module.css';
+import { useContext } from 'react';
+import { TodosContext } from '../store/todos-context';
 
 type TodoItemProps = {
   item: Todo;
-  onRemoveTodo: (id: string | undefined) => void;
-  setIsModalOpen: (bool: boolean) => void;
-  setTodoToEdit: (obj: Todo) => void;
 };
-
-const TodoItem = ({
-  item,
-  onRemoveTodo,
-  setIsModalOpen,
-  setTodoToEdit,
-}: TodoItemProps): JSX.Element => {
+// First way to type a Function:
+// const TodoItem: ({ item }: TodoItemProps) => JSX.Element = ({ item }) => {
+// Second way to type a Function:
+const TodoItem = ({ item }: TodoItemProps): JSX.Element => {
+  const { setTodoToEdit, setIsModalOpen, onRemoveTodo } =
+    useContext(TodosContext);
   return (
     <li className={classes.item} key={item.id}>
       <p className={classes['item-title']}>{item.text}</p>

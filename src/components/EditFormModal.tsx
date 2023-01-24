@@ -1,17 +1,10 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useState, useContext, ChangeEvent } from 'react';
 import classes from './EditFormModal.module.css';
+import { TodosContext } from '../store/todos-context';
 
-type EditFormProps = {
-  onSaveEdition: (newText: string) => void;
-  todoToEditText: string;
-  setIsModalOpen: (bool: boolean) => void;
-};
-
-const EditFormModal = ({
-  onSaveEdition,
-  todoToEditText,
-  setIsModalOpen,
-}: EditFormProps): JSX.Element => {
+const EditFormModal = (): JSX.Element => {
+  const { onSaveEdition, todoToEditText, setIsModalOpen } =
+    useContext(TodosContext);
   const [inputValue, setInputValue] = useState<string>(todoToEditText);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
@@ -22,7 +15,9 @@ const EditFormModal = ({
     }
   };
 
-  const handleChange = (event: FormEvent<HTMLInputElement>) => {
+  const handleChange: (event: ChangeEvent<HTMLInputElement>) => void = (
+    event
+  ) => {
     setInputValue(event.currentTarget.value);
   };
 

@@ -1,11 +1,9 @@
-import { FormEvent, useRef } from 'react';
+import { FormEvent, useRef, useContext } from 'react';
 import classes from './NewTodo.module.css';
+import { TodosContext } from '../store/todos-context';
 
-type NewTodoProps = {
-  onAddTodo: (text: string) => void;
-};
-
-const NewTodo = ({ onAddTodo }: NewTodoProps): JSX.Element => {
+const NewTodo = (): JSX.Element => {
+  const { onAddTodo } = useContext(TodosContext);
   const todoTextInputRef = useRef<HTMLInputElement | null>(null);
   const formRef = useRef<HTMLFormElement | null>(null);
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
