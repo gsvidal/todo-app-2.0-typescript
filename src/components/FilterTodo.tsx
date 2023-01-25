@@ -1,5 +1,5 @@
 import classes from './FilterTodo.module.css';
-import { ChangeEvent, useState, useContext } from 'react';
+import { ChangeEvent, useContext } from 'react';
 import { TodosContext } from '../store/todos-context';
 
 const FilterTodo = () => {
