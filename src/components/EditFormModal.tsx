@@ -5,20 +5,20 @@ import { TodosContext } from '../store/todos-context';
 const EditFormModal = (): JSX.Element => {
   const { onSaveEdition, todoToEditText, setIsModalOpen } =
     useContext(TodosContext);
-  const [inputValue, setInputValue] = useState<string>(todoToEditText);
+  const [inputEditValue, setInputEditValue] = useState<string>(todoToEditText);
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const result = window.confirm('Are you sure to save changes?');
     if (result) {
-      onSaveEdition(inputValue);
+      onSaveEdition(inputEditValue);
     }
   };
 
   const handleChange: (event: ChangeEvent<HTMLInputElement>) => void = (
     event
   ) => {
-    setInputValue(event.currentTarget.value);
+    setInputEditValue(event.currentTarget.value);
   };
 
   const handleCancel = () => {
@@ -35,7 +35,7 @@ const EditFormModal = (): JSX.Element => {
             <input
               type="text"
               id="edit-input"
-              value={inputValue}
+              value={inputEditValue}
               onChange={handleChange}
             />
           </div>

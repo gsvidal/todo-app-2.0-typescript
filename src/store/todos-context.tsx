@@ -10,6 +10,10 @@ type TodosContextObj = {
   onAddTodo: (todoText: string) => void;
   onRemoveTodo: (id: string | undefined) => void;
   onSaveEdition: (newTodoText: string) => void;
+  inputSearchValue: string;
+  setInputSearchValue: (val: string) => void;
+  filteredTodos: Todo[];
+  setFilteredTodos: (todos: Todo[]) => void;
 };
 
 type TodosContextProviderProps = {
@@ -24,8 +28,11 @@ export const TodosContextProvider = ({
   children,
 }: TodosContextProviderProps) => {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [filteredTodos, setFilteredTodos] = useState<Todo[]>(todos);
+
   const [todoToEdit, setTodoToEdit] = useState<Todo>({} as Todo);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [inputSearchValue, setInputSearchValue] = useState<string>('');
 
   const handleAddTodo = (todoText: string) => {
     const newTodo = new Todo(todoText);
@@ -59,6 +66,10 @@ export const TodosContextProvider = ({
     onAddTodo: handleAddTodo,
     onRemoveTodo: handleRemoveTodo,
     onSaveEdition: handleSaveEdition,
+    inputSearchValue: inputSearchValue,
+    setInputSearchValue: setInputSearchValue,
+    filteredTodos: filteredTodos,
+    setFilteredTodos: setFilteredTodos,
   };
 
   return (
